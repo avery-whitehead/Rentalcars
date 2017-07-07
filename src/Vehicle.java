@@ -13,10 +13,6 @@ public class Vehicle {
         this.rating = rating;
     }
 
-    public void printPrice() {
-        System.out.println(name + "-" + price);
-    }
-
     public String getSipp() {
         return sipp;
     }
@@ -36,4 +32,6 @@ public class Vehicle {
     public float getRating() {
         return rating;
     }
+
+
 }
