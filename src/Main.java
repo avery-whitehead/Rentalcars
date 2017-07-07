@@ -20,9 +20,30 @@ public class Main {
         List<Vehicle> vehicleList = gson.fromJson(jsonArray, listType);
         //Sorts the Vehicle list in ascending order by price
         Collections.sort(vehicleList, (v1, v2) -> Float.compare(v1.getPrice(), v2.getPrice()));
-        //Prints a list of the cars in the appropriate format
+        //Prints a list of the car prices in the appropriate format
         for (int i = 0; i < vehicleList.size(); i++) {
             System.out.println((i + 1) + ". " + vehicleList.get(i).getName() + " - " + vehicleList.get(i).getPrice());
+        }
+        System.out.print("\n");
+        //Calculates and sets the SIPP specifications
+        for (int i = 0; i < vehicleList.size(); i++) {
+        vehicleList.get(i).setCarType(vehicleList.get(i).calculateCarType());
+        vehicleList.get(i).setDoors(vehicleList.get(i).calculateDoors());
+        vehicleList.get(i).setTransmission(vehicleList.get(i).calculateTransmission());
+        vehicleList.get(i).setFuel(vehicleList.get(i).calculateFuel());
+        vehicleList.get(i).setAirCon(vehicleList.get(i).calculateAirCon());
+        //Prints out the SIPP specifications in the appropriate format
+        System.out.println((i + 1) + ". " + vehicleList.get(i).getName() + " - " + vehicleList.get(i).getSipp() +
+                " - " + vehicleList.get(i).getCarType() + " - " + vehicleList.get(i).getDoors() + " - " +
+                vehicleList.get(i).getTransmission() + " - " + vehicleList.get(i).getFuel() + " - " +
+                vehicleList.get(i).getAirCon());
+        }
+        System.out.print("\n");
+        //Sorts the Vehicle list in descending order by rating
+        Collections.sort(vehicleList, (v1, v2) -> Float.compare(v2.getPrice(), v1.getPrice()));
+        //Prints a list of the car ratings in the appropriate format
+        for (int i = 0; i < vehicleList.size(); i++) {
+            System.out.println((i + 1) + ". " + vehicleList.get(i).getName());
         }
     }
 }
