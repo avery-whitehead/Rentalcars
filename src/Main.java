@@ -40,10 +40,11 @@ public class Main {
         }
         System.out.print("\n");
         //Sorts the Vehicle list in descending order by rating
-        Collections.sort(vehicleList, (v1, v2) -> Float.compare(v2.getPrice(), v1.getPrice()));
+        Collections.sort(vehicleList, (v1, v2) -> Float.compare(v2.getRating(), v1.getRating()));
         //Prints a list of the car ratings in the appropriate format
         for (int i = 0; i < vehicleList.size(); i++) {
-            System.out.println((i + 1) + ". " + vehicleList.get(i).getName());
+            System.out.println((i + 1) + ". " + vehicleList.get(i).getName() + " - " + vehicleList.get(i).getCarType() +
+                " - " + vehicleList.get(i).getSupplier() + " - " + vehicleList.get(i).getRating());
         }
     }
 }
