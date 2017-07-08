@@ -9,7 +9,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Main {
-
     public static void main(String[] args) throws FileNotFoundException {
         Gson gson = new Gson();
         BufferedReader bufferedReader = new BufferedReader(new FileReader("src\\vehicles.json"));
@@ -51,10 +50,10 @@ public class Main {
         //Makes another ArrayList for holding the highest rated cars
         ArrayList<Vehicle> maxArrayList = new ArrayList<>();
         //Finds the highest rated vehicle of each car type
-        for (int i = 0; i < carTypesArray.size(); i++) {
+        for (String aCarTypesArray : carTypesArray) {
             //Adds every vehicle of each car type to the temporary ArrayList
             for (Vehicle vehicle : vehicleList) {
-                if (vehicle.getCarType().equals(carTypesArray.get(i))) {
+                if (vehicle.getCarType().equals(aCarTypesArray)) {
                     tempArrayList.add(vehicle);
                 }
             }
@@ -63,13 +62,31 @@ public class Main {
             //Resets the temporary array for the next loop
             tempArrayList.clear();
         }
-        //Sorts the max-rating ArrayList in descending order
+        //Sorts the max-rating ArrayList in descending order according to rating
         maxArrayList.sort(Comparator.comparing(Vehicle::getRating).reversed());
         //Prints a list of the car ratings in the appropriate format
         for (int i = 0; i < maxArrayList.size(); i++) {
             System.out.println((i + 1) + ". " + maxArrayList.get(i).getName() + " - " + maxArrayList.get(i).getCarType() +
                 " - " + maxArrayList.get(i).getSupplier() + " - " + maxArrayList.get(i).getRating());
         }
+        System.out.print("\n");
+        //Goes through each vehicle and sums up a breakdown score
+        for (Vehicle vehicle : vehicleList) {
+            if (vehicle.getTransmission().equals("Manual"))
+                vehicle.setBreakdownScore(vehicle.getBreakdownScore() + 1);
+            if (vehicle.getTransmission().equals("Automatic"))
+                vehicle.setBreakdownScore(vehicle.getBreakdownScore() + 5);
+            if (vehicle.getAirCon().equals("AC"))
+                vehicle.setBreakdownScore(vehicle.getBreakdownScore() + 2);
+            //Combines breakdown score and supplier rating score to create a sum of scores for each vehicle
+            vehicle.setSumOfScores(vehicle.getBreakdownScore() + vehicle.getRating());
+        }
+        //Sorts the vehicles list in descending order according to the sum of scores
+        vehicleList.sort(Comparator.comparing(Vehicle::getSumOfScores).reversed());
+        //Prints a list of the car scores in the appropriate format
+        for (int i = 0; i < vehicleList.size(); i++) {
+            System.out.println((i + 1) + ". " + vehicleList.get(i).getName() + " - " + vehicleList.get(i).getBreakdownScore() +
+                " - " + vehicleList.get(i).getRating() + " - " + vehicleList.get(i).getSumOfScores());
+        }
     }
-
 }

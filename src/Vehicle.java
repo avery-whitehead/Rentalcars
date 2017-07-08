@@ -9,6 +9,8 @@ public class Vehicle  {
     private String transmission;
     private String fuel;
     private String airCon;
+    private int breakdownScore;
+    private float sumOfScores;
 
     /*public Vehicle(String sipp, String name, float price, String supplier, float rating) {
         this.sipp = sipp;
@@ -63,6 +65,14 @@ public class Vehicle  {
         return airCon;
     }
 
+    public int getBreakdownScore() {
+        return breakdownScore;
+    }
+
+    public float getSumOfScores() {
+        return sumOfScores;
+    }
+
     public void setCarType(String carType) {
         this.carType = carType;
     }
@@ -81,6 +91,14 @@ public class Vehicle  {
 
     public void setAirCon(String airCon) {
         this.airCon = airCon;
+    }
+
+    public void setBreakdownScore(int breakdownScore) {
+        this.breakdownScore = breakdownScore;
+    }
+
+    public void setSumOfScores(float sumOfScores) {
+        this.sumOfScores = sumOfScores;
     }
 
     /**
