@@ -1,4 +1,4 @@
-public class Vehicle {
+public class Vehicle  {
     private String sipp;
     private String name;
     private float price;
