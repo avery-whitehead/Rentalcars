@@ -12,19 +12,6 @@ public class Vehicle  {
     private int breakdownScore;
     private float sumOfScores;
 
-    /*public Vehicle(String sipp, String name, float price, String supplier, float rating) {
-        this.sipp = sipp;
-        this.name = name;
-        this.price = price;
-        this.supplier = supplier;
-        this.rating = rating;
-        this.carType = calculateCarType();
-        this.doors = calculateDoors();
-        this.transmission = calculateTransmission();
-        this.fuel = calculateFuel();
-        this.airCon = calculateAirCon();
-    }*/
-
     public String getSipp() {
         return sipp;
     }
