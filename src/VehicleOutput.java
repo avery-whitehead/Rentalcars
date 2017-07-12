@@ -18,7 +18,7 @@ public class VehicleOutput {
 
     public VehicleOutput() throws FileNotFoundException {
         Gson gson = new Gson();
-        BufferedReader bufferedReader = new BufferedReader(new FileReader("src\\vehicles.json"));
+        BufferedReader bufferedReader = new BufferedReader(new FileReader("vehicles.json"));
         JsonParser jsonParser = new JsonParser();
         //Creates a JSON array out of the JSON file
         JsonArray jsonArray = jsonParser.parse(bufferedReader).getAsJsonObject().getAsJsonObject("Search").getAsJsonArray("VehicleList");
